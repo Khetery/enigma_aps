@@ -7,10 +7,49 @@ class Rotor:
     _posicaoEntalhe = 0
     _configuracaoAnel = 0
 
+    
+
+    def getNome(self):
+        return self._nome
+    
+    def getPosicao(self):
+        return self._posicaoRotor
+    
+    def decodificaFiacao(encoding):
+        Fiacao = [len(encoding)]
+        n=0
+        for i in encoding:
+            Fiacao[n]=ord(i)-97
+        return Fiacao
+
+    def fiacaoReversa(fiacao):
+        inverso = [len(fiacao)]
+        for i in range(len(fiacao)):
+            praFrente = fiacao[i]
+            inverso[praFrente] = i
+        return inverso
+
+    def encifra(k,pos,anel,mapeamento):
+        shift = pos - anel
+        return (mapeamento[(k+shift+26)%26] -shift+26)%26
+    
+    def praFrente(self,c):
+        return self.encifra(c,self._posicaoRotor,self._configuracaoAnel,self._fiacaoDireta)
+    
+    def praTras(self,c):
+        return self.encifra(c,self._posicaoRotor,self._configuracaoAnel,self._fiacaoInversa)
+
+    def eUmEntalhe(self):
+        return self._posicaoRotor == self._posicaoEntalhe
+
+    def darVolta(self):
+        self._posicaoRotor = (self._posicaoRotor+1)%26
+    
+
     def __init__(self,nome,codificacao,posicaoRotor,posicaoEntalhe,configuracaoAnel):
         self._nome = nome
-        self._fiacaoDireta = decodificaFiacao(codificacao)
-        self._fiacaoInversa = fiacaoReversa(self._fiacaoDireta)
+        self._fiacaoDireta = self.decodificaFiacao(codificacao)
+        self._fiacaoInversa = self.fiacaoReversa(self._fiacaoDireta)
         self._posicaoRotor = posicaoRotor
         self._posicaoEntalhe = posicaoEntalhe
         self._configuracaoAnel = configuracaoAnel
@@ -28,23 +67,6 @@ class Rotor:
             case "V":
                 return Rotor("V","yipenwoftqrlzjabmcxvkhgsud",posicaoRotor,25,configuracaoAnel)
     
-    def getNome(self):
-        return self._nome
-    
-    def getPosicao(self):
-        return self._posicaoRotor
-    
-    def decodificaFiacao(encoding):
-        Fiacao = [len(encoding)]
-        n=0
-        for i in encoding:
-            Fiacao[n]=ord(i)-97
-        return Fiacao
-
-    def fiacaoReversa(fiacao):
-        inverso = [len(fiacao)]
-        for i in range(len(fiacao)):
-            
             
 
         
