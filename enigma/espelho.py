@@ -1,4 +1,4 @@
-class espelho:
+class Espelho:
 
     _fiacaoDireta = []
 
@@ -9,11 +9,11 @@ class espelho:
     def criar(nome):
         match nome:
             case "B": 
-                return espelho("YRUHQSLDPXNGOKMIEBFZCWVJAT")
+                return Espelho("YRUHQSLDPXNGOKMIEBFZCWVJAT")
             case "C":
-                return espelho("FVPJIAOYEDRZXWGCTKUQSBNMHL")
+                return Espelho("FVPJIAOYEDRZXWGCTKUQSBNMHL")
             case other:
-                return espelho("ZYXWVUTSRQPONMLKJIHGFEDCBA")
+                return Espelho("ZYXWVUTSRQPONMLKJIHGFEDCBA")
     
     @staticmethod 
     def _decodificaFiacao(codificacao):
