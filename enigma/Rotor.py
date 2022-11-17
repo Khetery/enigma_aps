@@ -15,21 +15,20 @@ class Rotor:
     def getPosicao(self):
         return self._posicaoRotor
     
-    def decodificaFiacao(encoding):
-        Fiacao = [len(encoding)]
-        n=0
-        for i in encoding:
-            Fiacao[n]=ord(i)-97
+    def decodificaFiacao(self,encoding):
+        Fiacao = [None]*len(encoding)
+        for i,letter in enumerate(encoding):
+            Fiacao[i]=ord(letter)-97
         return Fiacao
 
-    def fiacaoReversa(fiacao):
-        inverso = [len(fiacao)]
+    def fiacaoReversa(self,fiacao):
+        inverso = [None]*len(fiacao)
         for i in range(len(fiacao)):
             praFrente = fiacao[i]
             inverso[praFrente] = i
         return inverso
 
-    def encifra(k,pos,anel,mapeamento):
+    def encifra(self,k,pos,anel,mapeamento):
         shift = pos - anel
         return (mapeamento[(k+shift+26)%26] -shift+26)%26
     

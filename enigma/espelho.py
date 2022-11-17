@@ -18,8 +18,8 @@ class Espelho:
     @staticmethod 
     def _decodificaFiacao(codificacao):
         charfiacao = codificacao
-        fiacao = [len(charfiacao)]
-        for i in range(0,len(charfiacao,1)):
+        fiacao = [None]*len(charfiacao)
+        for i in range(0,len(charfiacao),1):
             fiacao[i] = ord(charfiacao[i])-65
         return fiacao
     
